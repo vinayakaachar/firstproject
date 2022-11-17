@@ -1,0 +1,242 @@
+mport java.util.*;
+
+public class atm {
+  double balance,reminingamount;
+  void balancecheck() {
+    System.out.println("Your Saving Account Balance is "+balance);
+    
+  }
+   void amountWithdral() {
+    System.out.println("How much amount You want to withdral !:");
+    Scanner sc=new Scanner(System.in);
+    int withdralAmount=sc.nextInt();
+    if(withdralAmount>balance) {
+      System.out.println("Insufficent Balance ...plz Check Onces Thank You");
+      System.out.println("1.Balance Check"+"\n"+"2.Amount Withdral"+"\n"+"3.Exit");
+      System.out.println("Plz slect Any One of the above srvices...");
+      //double see=sc.nextDouble();
+      int see=sc.nextInt();
+      switch(see) {
+      case 1:
+        balancecheck();
+  
+      case 2:
+        amountWithdral();
+        break;
+      case 3:
+        return;
+        default:
+          System.out.println("Enter vaild Number");
+      }
+    
+      
+      
+    }
+    else if(withdralAmount%500!=0) {
+      System.out.println("Only 500 multiples Available ...Sorry for Inconvenience");
+    amountWithdral() ;
+    }
+    else {
+    balance-= withdralAmount;
+    System.out.println("Your Amount Withdral sucessfull Completed...");
+    System.out.println("1.Balance Check"+"\n"+"2.Exit");
+    System.out.println("Plz slect Any One of the above srvices if u need...");
+    int see=sc.nextInt();
+    switch(see) {
+    case 1:
+      balancecheck();
+
+    case 2:
+      return;
+      default:
+        System.out.println("Enter vaild Number");
+    }
+    }
+  }
+   void interestdeposit() {
+                 Scanner sc=new Scanner(System.in);
+          System.out.println("How much amount You want to Deposit ");
+          
+          int amount=sc.nextInt();
+          if(amount<100) {
+            System.out.println("Please Deposit above 100  Only ...Sorry for Inconvenice");
+            depositeamount() ;
+          }
+          else if(amount%500!=0) {
+            System.out.println("Please Deposit mutiples of 500 Only.....Sorry for Inconvenice");
+            depositeamount() ;
+          }
+          else
+          {   double interestamount=(amount*5)/100;
+            balance+=amount-interestamount;
+            System.out.println("Your Amount Deposit sucessfull Completed...");
+            System.out.println("1.Balance Check"+"\n"+"2.Exit");
+            System.out.println("Plz slect Any One of the above srvices if u need...");
+            int see=sc.nextInt();
+            switch(see) {
+            case 1:
+              balancecheck();
+
+            case 2:
+              return;
+              default:
+                System.out.println("Enter vaild Number");
+            }
+          }
+   }
+   void howtodeposit() {
+       Scanner sc=new Scanner(System.in);
+      System.out.println("How much amount You want to Deposit ");
+      
+      int amount=sc.nextInt();
+      if(amount<100) {
+        System.out.println("Please Deposit above 100  Only ...Sorry for Inconvenice");
+        depositeamount() ;
+      }
+      else if(amount%500!=0) {
+        System.out.println("Please Deposit mutiples of 500 Only.....Sorry for Inconvenice");
+        depositeamount() ;
+      }
+      else
+      {
+        balance+=amount;
+        System.out.println("Your Amount Deposit sucessfull Completed...");
+        System.out.println("1.Balance Check"+"\n"+"2.Exit");
+        System.out.println("Plz slect Any One of the above srvices if u need...");
+        int see=sc.nextInt();
+        switch(see) {
+        case 1:
+          balancecheck();
+
+case 2:
+          return;
+          default:
+            System.out.println("Enter vaild Number");
+        }
+      }
+   }
+   void depositeamount() {
+      System.out.println("Please Select Any One of the Bank Type: ");
+      System.out.println("1.Same bank deposit"+"\n"+"2.Other bank deposit");
+      Scanner sc=new Scanner(System.in);
+      int select=sc.nextInt();
+      switch(select) {
+      case 1:
+        howtodeposit();
+        break;
+      case 2:
+        depositOtherbank();
+      }
+    }
+   void depositOtherbank() {
+     System.out.println("**IMPORTANT ANNOUNCEMENT**");
+     System.out.println("If You interest to Deposit in OtherBank Accounts 5% of serveries Charge Applicalbe.. "+"Are You Interset ?");
+     System.out.println("1.YES"+"\n"+"2.NO");
+     System.out.println("Please select Any One of the Above:");
+     Scanner sc=new Scanner(System.in);
+      int select=sc.nextInt();
+      switch(select) {
+      case 1:
+        System.out.println("Thank You For interesting...This servies");
+        System.out.println("Please Enter Account Number ");
+        String accountnumber=sc.next();
+        
+//        long accountnumber=sc.nextInt();
+//        // counting bank account number for Verification
+//           int count=0;
+//           while(accountnumber!=0) {
+//             accountnumber/=10;
+//             count++;
+//           }
+           if(accountnumber.length()==11) {
+             interestdeposit();
+           }else
+           {
+             System.out.println("Sorry Please Eneter Correct Account Number");
+             depositOtherbank();
+           }
+      case 2:
+        //System.out.println("Thank You For Visiting");
+        return;
+        
+      }
+     
+   }
+   void moneytransfer() {
+     System.out.println("Please Enter UPI address :");
+     Scanner sc=new Scanner(System.in);
+     String upi=sc.nextLine();
+     System.out.println("Please Enter how much amount to Transfer to Other Bank");
+      double amount=sc.nextDouble();
+      System.out.println("Please Enter Your Username:");
+      String user=sc.next();
+      System.out.println("Please Enter Your Password");
+       String pass=sc.next();
+       String username="Friends2";
+     String password="Vikas1729@";
+    
+     if(pass.compareTo(password)==0 && user.compareTo(username)==0) {
+       balance-=amount;
+       System.out.println("Sucessfull Compelted Transections.... ");
+       System.out.println("1.Balance Check"+"\n"+"2.Exit");
+        System.out.println("Plz slect Any One of the above srvices if u need...");
+        int see=sc.nextInt();
+        switch(see) {
+        case 1:
+          balancecheck();
+
+        case 2:
+          return;
+          default:
+            System.out.println("Enter vaild Number");
+        }
+     }else {
+       System.out.println("Please Enter Correct Details...Username/Password is Wrong Please Check Onces....");
+       moneytransfer();
+     }
+   }
+
+  public static void main(String[] args) {
+    // TODO Auto-generated method stubs
+    System.out.println("**********");
+    System.out.println("        Welcome to ATM          ");
+    System.out.println("**********");
+    atm bal=new atm();
+    //atm withbal=new atm();
+    
+    Scanner sc=new Scanner(System.in);
+    
+    bal.balance=10000;
+  
+
+    while(true) {
+      System.out.println("**********************");
+      System.out.println("Choice Any one of Servies");
+      System.out.println("1.Balance Check"+"\n" +"2.Amount Withdral"+"\n"+"3.Deposit Amount"
+      +"\n"+"4.Money Transfer"+"\n"+"5.Exit");
+      System.out.println("**********************");
+      int choice=sc.nextInt();
+      switch(choice) {
+      case 1:
+        bal.balancecheck();
+        break;
+      case 2:
+        bal.amountWithdral();
+        break;
+      case 3:
+        bal.depositeamount();
+        break;
+      case 4:
+        bal.moneytransfer()  ;
+        break;
+      case 5:
+        System.out.println("Thank You For Visiting");
+        return;
+      }
+
+    }
+    
+
+  }
+
+}
